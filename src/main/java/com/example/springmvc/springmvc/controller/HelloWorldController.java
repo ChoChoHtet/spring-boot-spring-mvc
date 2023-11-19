@@ -3,6 +3,8 @@ package com.example.springmvc.springmvc.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HelloWorldController {
 
     //show initial form
-    @RequestMapping("/showForm")
+    @GetMapping("/showForm")
     public String showForm() {
         return "helloworld-form";
     }
@@ -19,6 +21,7 @@ public class HelloWorldController {
     public String processForm() {
         return "helloworld-process";
     }
+
 
     @RequestMapping("v2/processForm")
     public String processFormV2(HttpServletRequest request, Model model) {
@@ -29,8 +32,9 @@ public class HelloWorldController {
         return "helloworld-process-v2";
     }
 
+    // POST method form data is sent in http request body
     //read the request data from data form using @RequestParam Binding
-    @RequestMapping("v3/processForm")
+    @PostMapping("v3/processForm")
     public String processFormV3(@RequestParam("studentName") String name, Model model) {
 
         String message = "Hey How's going , " + name.toUpperCase() + " ?";
