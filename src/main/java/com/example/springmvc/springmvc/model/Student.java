@@ -1,6 +1,6 @@
 package com.example.springmvc.springmvc.model;
 
-import jakarta.validation.constraints.Max;
+import com.example.springmvc.springmvc.annotation.CourseCode;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,6 +22,9 @@ public class Student {
     private String country;
     private String favoriteLanguage;
     private List<String> favoriteOS;
+    @CourseCode
+    //@CourseCode(value = "CH",message = "code must start with CH")
+    private String promotionCode;
 
     public Student() {
 
@@ -81,5 +84,13 @@ public class Student {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getPromotionCode() {
+        return promotionCode;
+    }
+
+    public void setPromotionCode(String promotionCode) {
+        this.promotionCode = promotionCode;
     }
 }

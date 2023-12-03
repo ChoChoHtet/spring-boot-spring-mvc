@@ -31,6 +31,11 @@
           th:errors="*{age}"
           class="error"></span>
     <br><br>
+    Promotion Code: <label><input type="text" th:field="*{promotionCode}"/></label>
+    <span th:if="${#fields.hasErrors('promotionCode')}"
+          th:errors="*{promotionCode}"
+          class="error"></span>
+    <br><br>
     Country:
     <!-- Drop down list of country -->
     <label>
