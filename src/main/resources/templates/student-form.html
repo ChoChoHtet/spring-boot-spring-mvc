@@ -3,14 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Registration</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <h3>Student Registration Form</h3>
 <!-- th:field mean bind the value to student object -->
 <form th:action="@{/student/processStudentFrom}" th:object="${student}" method="post">
     First Name: <label><input type="text" th:field="*{firstName}"/></label>
+    <!-- display error messages ( if present) -->
+    <span th:if="${#fields.hasErrors('firstName')}"
+          th:errors="*{firstName}"
+          class="error"></span>
     <br><br>
     Last Name: <label><input type="text" th:field="*{lastName}"/></label>
+    <br><br>
+    Phone Number: <label><input type="tel" th:field="*{phoneNumber}"/></label>
+    <span th:if="${#fields.hasErrors('phoneNumber')}"
+          th:errors="*{phoneNumber}"
+          class="error"></span>
+    <br><br>
+    Age: <label><input type="text" th:field="*{age}"/></label>
+    <span th:if="${#fields.hasErrors('age')}"
+          th:errors="*{age}"
+          class="error"></span>
     <br><br>
     Country:
     <!-- Drop down list of country -->
