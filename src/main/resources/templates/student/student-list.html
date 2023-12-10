@@ -11,6 +11,7 @@
 <div class="container">
     <h3>Student Directory</h3>
     <hr>
+    <a th:href="@{/students/addStudent}" class="btn btn-primary btn-sm mb-3">Add Student</a>
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
         <tr>
@@ -20,6 +21,7 @@
             <th>Phone Number</th>
             <th>Email</th>
             <th>Country</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -30,6 +32,17 @@
             <td th:text="${student.phoneNumber}"></td>
             <td th:text="${student.email}"></td>
             <td th:text="${student.country}"></td>
+            <td class="align-items-center">
+                <a th:href="@{/students/updateStudent(studentId=${student.id})}"
+                   class="btn btn-primary btn-sm ">
+                    UPDATE
+                </a>
+                <a th:href="@{/students/deleteStudent(studentId=${student.id})}"
+                   class="btn btn-danger btn-sm "
+                   onclick="if (!(confirm('Are you sure to delete this student'))) return false">
+                    DELETE
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

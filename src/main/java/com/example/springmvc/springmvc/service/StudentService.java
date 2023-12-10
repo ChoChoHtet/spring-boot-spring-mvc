@@ -10,6 +10,8 @@ public interface StudentService {
 
     StudentInfo save(StudentInfo studentInfo);
 
+    StudentInfo findById(int id);
+
     void deleteById(int id);
 
 }

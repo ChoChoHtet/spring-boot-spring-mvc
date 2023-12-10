@@ -19,7 +19,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentInfo> findAll() {
-        return repository.findAll();
+        return repository.findAllByOrderByFirstNameAsc();
     }
 
     @Override
@@ -29,7 +29,17 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentInfo save(StudentInfo studentInfo) {
+        System.out.println("save student: " + studentInfo);
         return repository.save(studentInfo);
+    }
+
+    @Override
+    public StudentInfo findById(int id) {
+        Optional<StudentInfo> studentInfo = repository.findById(id);
+        if (studentInfo.isEmpty()){
+            throw new RuntimeException("Couldn't find the student");
+        }
+        return studentInfo.get();
     }
 
     //TODO optimize this

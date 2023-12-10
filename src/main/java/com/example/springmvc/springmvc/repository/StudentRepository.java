@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StudentRepository extends JpaRepository<StudentInfo, Integer> {
     List<StudentInfo> findByFirstName(String name);
+    List<StudentInfo> findAllByOrderByFirstNameAsc();
 }
